@@ -7,9 +7,9 @@ import com.example.demo.domain.*;
 
 @Component
 @Mapper
-public interface UserDao {
+public interface ArticleDao {
     //查找用户
-    @Select("select * from user where userName=#{userName}")
+    @Select("select * from article where article_id=#{artcle_name}")
     User findUserByName(String userName);
     //注册用户
     @Insert("insert into user(userName,password,email) values(#{userName},#{password},#{email})")

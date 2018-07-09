@@ -7,7 +7,7 @@ import com.example.demo.domain.*;
 
 @Component
 @Mapper
-public interface UserDao {
+public interface CommentDao {
     //查找用户
     @Select("select * from user where userName=#{userName}")
     User findUserByName(String userName);

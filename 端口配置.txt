@@ -1,0 +1,16 @@
+用户
+/selectUser
+输入：userName,password
+输出：user对象
+/isNameRepeat
+输入：userName
+输出：0或1
+/insertUser
+输入：userName,password,email
+输出：0或1
+/updateEmail
+输入：email
+输出：0或1
+/updatePassword
+输入：password
+输出：0或1
