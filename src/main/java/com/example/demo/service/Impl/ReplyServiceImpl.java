@@ -1,5 +1,7 @@
 package com.example.demo.service.Impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import com.example.demo.dao.ReplyDao;
@@ -13,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class ReplyServiceImpl implements ReplyService{
     @Resource
     private ReplyDao replyDao;
-    public Reply findReply(int comment_id){
+    public List<Reply> findReply(int comment_id){
         return replyDao.findReply(comment_id);
     }
     public int addReply(Reply reply){

@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import com.example.demo.domain.Reply;
@@ -18,7 +20,7 @@ public class ReplyController {
 
 	@RequestMapping("/findReply")
 	@ResponseBody
-	public Reply findReply(int comment_id){
+	public List<Reply> findReply(int comment_id){
 		return replyService.findReply(comment_id);
 	}
 	@RequestMapping("/insertReply")

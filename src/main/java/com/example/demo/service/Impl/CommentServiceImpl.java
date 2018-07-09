@@ -1,5 +1,7 @@
 package com.example.demo.service.Impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import com.example.demo.dao.CommentDao;
@@ -12,8 +14,8 @@ import org.springframework.stereotype.Service;
 public class CommentServiceImpl implements CommentService{
     @Resource
     private CommentDao commentDao;
-    public  Comment findComment(String article_name){
-        return commentDao.findComment(article_name);
+    public  List<Comment> findComment(String article_name,int num,int num2){
+        return commentDao.findComment(article_name,num,num2);
     }
     public int addComment(Comment comment){
         return commentDao.addComment(comment);

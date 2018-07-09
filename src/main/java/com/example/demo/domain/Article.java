@@ -8,6 +8,8 @@ public class Article{
 	private String article;
 	private String article_intro;
 	private String date;
+	private int praise;
+	private int click;
 	public String getDate() {
 		return date;
 	}
@@ -44,6 +46,17 @@ public class Article{
 	public void setArticle_intro(String article_intro) {
 		this.article_intro = article_intro;
 	}
-	
+	public int  getClick() {
+		return click;
+	}
+	public void setClick(int click) {
+		this.click =click;
+	}
+	public int  getPraise() {
+		return praise;
+	}
+	public void setPraise(int praise) {
+		this.praise =praise;
+    }
    
 }

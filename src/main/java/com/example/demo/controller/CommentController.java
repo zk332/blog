@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import com.example.demo.domain.Comment;
@@ -18,8 +20,10 @@ public class CommentController {
 
 	@RequestMapping("/findComment")
 	@ResponseBody
-	public Comment findComment(String article_name){
-		return commentService.findComment(article_name);
+	public List<Comment> findComment(String article_name,int num){
+		num=(num-1)*5;
+		int num2=num+5;
+		return commentService.findComment(article_name,num,num2);
 	}
 	@RequestMapping("/addComment")
 	public int addComment(Comment comment){
