@@ -3,7 +3,7 @@ package com.example.demo.dao;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
-import com.example.demo.domain.*;
+import com.example.demo.domain.User;;
 
 @Component
 @Mapper

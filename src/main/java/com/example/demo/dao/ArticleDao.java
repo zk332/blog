@@ -3,21 +3,15 @@ package com.example.demo.dao;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
-import com.example.demo.domain.*;
+import com.example.demo.domain.Article;;
 
 @Component
 @Mapper
 public interface ArticleDao {
-    //查找用户
+    //查找博客
     @Select("select * from article where article_id=#{artcle_name}")
-    User findUserByName(String userName);
-    //注册用户
-    @Insert("insert into user(userName,password,email) values(#{userName},#{password},#{email})")
-    int addUser(User user);
-    //修改邮箱
-    @Update("update user set email=#{email} where name=#{userName}")
-    int updateEmail(String email);
-    //修改密码
-    @Update("update user set password=#{password} where name=#{userName}")
-    int updatePassword(String password);
+    Article findArticleByName(String article_name);
+    //发表博客
+    @Insert("insert into article (article,author,article_name,article_intro,date) values(#{article},#{author},#{article_name},#{article_intro},#{date})")
+    int addArticle(Article article);
 }

@@ -7,6 +7,14 @@ public class Comment {
 	private String author;
 	private String article_name;
 	private int has_reply;
+	private String date;
+	
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date =date;
+    }
 	public int getComment_id() {
 		return comment_id;
 	}
