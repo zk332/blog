@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -44,7 +45,10 @@ public class ArticleController {
 			return articleService.addArticle(article);
 		
 		}
-		return 0;
-
+		return -1;
 	}	
+	@RequestMapping(value="/findAll")
+	public List<Article> findAll() {
+		return articleService.findAll();
+	}
 }

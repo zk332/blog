@@ -1,5 +1,7 @@
 package com.example.demo.service.Impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import com.example.demo.dao.ArticleDao;
@@ -18,5 +20,9 @@ public class ArticleServiceImpl implements ArticleService{
     public int addArticle(Article article){
         return articleDao.addArticle(article);
     }
+	@Override
+	public List<Article> findAll() {
+		return articleDao.findAll();
+	}
    
 }

@@ -82,7 +82,7 @@ public class UserController {
 	@RequestMapping("/register")
 	public int insertUser(User user){
 		if(userService.findUserByName(user.getUserName())!=null) {
-			return 0;
+			return -1;
 		}
 		return userService.addUser(user);
 	}
