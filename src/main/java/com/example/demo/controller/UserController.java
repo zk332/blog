@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.example.demo.domain.User;
 import com.example.demo.service.UserService;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,7 +22,7 @@ public class UserController {
 	private Cookie cookie1;
 	private Cookie cookie2;
 	@RequestMapping("/login")
-	public int login(HttpServletRequest request,HttpServletResponse response){
+	public String login(HttpServletRequest request,HttpServletResponse response){
 		String name=request.getParameter("userName");
 		String password=request.getParameter("password");
 		String password2=userService.findUserByName(name).getPassword();
@@ -29,15 +30,17 @@ public class UserController {
 			cookie1=new Cookie("name",name);
 			cookie2=new Cookie("password", password);
 			request.getSession().setAttribute("userName",name);
-			return 1;
+			System.out.println(name);
+			return "1";
 		}
-		return 0;
+		return "0";
 	}
 	@RequestMapping("/isLogined")
 	public int isLogined(HttpServletRequest request){
 		if(request.getSession().getAttribute("userName")!=null)
 			return 1;
 		return 0;
+			
 	}
 	@RequestMapping("/autoLogin")
 	public String autoLogin(HttpServletRequest request,HttpServletResponse response){
@@ -76,8 +79,11 @@ public class UserController {
 			return 1;
 		return 0;
 	}
-	@RequestMapping("/insertUser")
+	@RequestMapping("/register")
 	public int insertUser(User user){
+		if(userService.findUserByName(user.getUserName())!=null) {
+			return 0;
+		}
 		return userService.addUser(user);
 	}
 	@RequestMapping("/updateEmail")

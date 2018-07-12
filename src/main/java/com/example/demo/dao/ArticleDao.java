@@ -12,6 +12,7 @@ public interface ArticleDao {
     @Select("select * from article where article_id=#{artcle_name}")
     Article findArticleByName(String article_name);
     //发表博客
-    @Insert("insert into article (article,author,article_name,article_intro,date) values(#{article},#{author},#{article_name},#{article_intro},#{date})")
+    @Insert("insert into article (article,author,article_name,article_intro,date,tag1,tag2) "
+    		+ "values(#{article},#{author},#{article_name},#{article_intro},#{date},#{tag1},#{tag2})")
     int addArticle(Article article);
 }

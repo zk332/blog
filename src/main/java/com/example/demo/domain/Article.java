@@ -4,12 +4,27 @@ package com.example.demo.domain;
 public class Article{
     private int article_id;
     private String article_name;
-    private int author;
+    private String author;
 	private String article;
 	private String article_intro;
 	private String date;
+	private String tag1;
+	private String tag2;
 	private int praise;
 	private int click;
+	
+	public String getTag1() {
+		return tag1;
+	}
+	public void setTag1(String tag1) {
+		this.tag1 = tag1;
+	}
+	public String getTag2() {
+		return tag2;
+	}
+	public void setTag2(String tag2) {
+		this.tag2 = tag2;
+	}
 	public String getDate() {
 		return date;
 	}
@@ -28,10 +43,10 @@ public class Article{
 	public void setArticle_name(String article_name) {
 		this.article_name = article_name;
 	}
-	public int getAuthor() {
+	public String getAuthor() {
 		return author;
 	}
-	public void setAuthor(int author) {
+	public void setAuthor(String author) {
 		this.author = author;
 	}
 	public String getArticle() {
