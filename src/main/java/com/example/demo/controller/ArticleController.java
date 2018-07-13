@@ -21,20 +21,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-@RestController//相当于@Controller+@ResponseBody
+@RestController // 相当于@Controller+@ResponseBody
 @CrossOrigin
 public class ArticleController {
 	@Resource
 	private ArticleService articleService;
 
 	@RequestMapping("/selectArticle")
-	public Article selectUser(String article_name){
+	public Article selectUser(String article_name) {
 		return articleService.findArticleByName(article_name);
 	}
+
 	@PostMapping("/insertArticle")
-	public int insertArticle(HttpServletRequest request){
-		if(articleService.findArticleByName(request.getParameter("article_name"))==null) {		
-			Article article=new Article();
+	public int insertArticle(HttpServletRequest request) {
+		if (articleService.findArticleByName(request.getParameter("article_name")) == null) {
+			Article article = new Article();
 			article.setArticle(request.getParameter("article"));
 			article.setArticle_name(request.getParameter("article_name"));
 			article.setArticle_intro(request.getParameter("article_intro"));
@@ -43,28 +44,36 @@ public class ArticleController {
 			Date date = new Date();
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			article.setDate(dateFormat.format(date));
-			String name=request.getParameter("userName");
-					//request.getSession().getAttribute("userName").toString();
+			String name = request.getParameter("userName");
+			// request.getSession().getAttribute("userName").toString();
 			article.setAuthor(name);
 			return articleService.addArticle(article);
-		
+
 		}
 		return -1;
-	}	
-	@RequestMapping(value="/findAll")
+	}
+
+	@RequestMapping(value = "/findAll")
 	public List<Article> findAll() {
 		return articleService.findAll();
 	}
-	@PostMapping(value="/testUpload")  
-	     public void testUploadFile(HttpServletRequest req,MultipartHttpServletRequest multiReq) throws IOException{  
-	        FileOutputStream fos=new FileOutputStream(new File("/static/upload/"));  
-	        FileInputStream fs=(FileInputStream) multiReq.getFile("file").getInputStream();  
-	        byte[] buffer=new byte[1024];  
-	        int len=0;  
-	        while((len=fs.read(buffer))!=-1){  
-	           fos.write(buffer, 0, len);  
-	       }  
-	        fos.close();  
-	        fs.close();  
-	    }
+
+	@PostMapping(value = "/testUpload")
+	public String testUploadFile(HttpServletRequest req, MultipartHttpServletRequest multiReq) throws IOException {
+		String str="/src/main/resources/static/upload/";
+		String name=multiReq.getFile("image").getOriginalFilename();
+		File directory = new File("");
+		String fullFilePath = directory.getAbsolutePath();
+		str=fullFilePath+str+name;
+		FileOutputStream fos = new FileOutputStream(new File(str));
+		FileInputStream fs = (FileInputStream) multiReq.getFile("image").getInputStream();
+		byte[] buffer = new byte[1024];
+		int len = 0;
+		while ((len = fs.read(buffer)) != -1) {
+			fos.write(buffer, 0, len);
+		}
+		fos.close();
+		fs.close();
+		return "localhost:8080/upload/"+name;
+	}
 }
