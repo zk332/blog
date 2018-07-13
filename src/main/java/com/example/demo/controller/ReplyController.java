@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -25,8 +27,9 @@ public class ReplyController {
 	}
 	@RequestMapping("/insertReply")
 	public int insertReply(Reply reply){
+		Date date = new Date();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		reply.setDate(dateFormat.format(date));
 		return replyService.addReply(reply);
-	}
-
-	
+	}	
 }

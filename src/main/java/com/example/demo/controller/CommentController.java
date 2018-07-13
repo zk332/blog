@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -27,6 +29,9 @@ public class CommentController {
 	}
 	@RequestMapping("/addComment")
 	public int addComment(Comment comment){
+		Date date = new Date();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		comment.setDate(dateFormat.format(date));
 		return commentService.addComment(comment);
 	}
 }
