@@ -57,7 +57,17 @@ public class ArticleController {
 	public List<Article> findAll() {
 		return articleService.findAll();
 	}
-
+	@RequestMapping(value = "/findPages")
+	public int findPages(){
+		return articleService.findPages();
+	}
+	@RequestMapping("/findPageArticle")
+	public List<Article> findPageArticle(HttpServletRequest req){
+		int num=Integer.parseInt(req.getParameter("num"));
+		num=(num-1)*5;
+		int num1=num+4;
+		return articleService.findPageArticle(num, num1);
+	}
 	@PostMapping(value = "/testUpload")
 	public String testUploadFile(HttpServletRequest req, MultipartHttpServletRequest multiReq) throws IOException {
 		String str="/src/main/resources/static/upload/";
@@ -74,6 +84,6 @@ public class ArticleController {
 		}
 		fos.close();
 		fs.close();
-		return "localhost:8080/upload/"+name;
+		return "http://localhost:8080/upload/"+name;
 	}
 }

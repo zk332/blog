@@ -19,4 +19,8 @@ public interface ArticleDao {
     int addArticle(Article article);
     @Select("select * from article")
     List<Article> findAll();
+    @Select("select count(*) from article")
+    int findPages();
+    @Select("select * from article order by date limit #{num},#{num1}")
+    List<Article> getPageArticle(int num,int num1);
 }

@@ -24,5 +24,11 @@ public class ArticleServiceImpl implements ArticleService{
 	public List<Article> findAll() {
 		return articleDao.findAll();
 	}
+	public int findPages() {
+		return articleDao.findPages();
+	}
+	public List<Article> findPageArticle(int num,int num1){
+		return articleDao.getPageArticle(num, num1);
+	}
    
 }

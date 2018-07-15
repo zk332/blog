@@ -24,7 +24,7 @@ public class CommentController {
 	@ResponseBody
 	public List<Comment> findComment(String article_name,int num){
 		num=(num-1)*5;
-		int num2=num+5;
+		int num2=num+4;
 		return commentService.findComment(article_name,num,num2);
 	}
 	@RequestMapping("/addComment")
